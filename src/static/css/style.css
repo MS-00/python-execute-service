@@ -1,3 +1,7 @@
 button:hover {
     cursor: pointer;
 }
+
+pre {
+    white-space: pre-wrap;
+}

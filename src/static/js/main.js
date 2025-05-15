@@ -37,7 +37,8 @@ document.addEventListener("DOMContentLoaded", function () {
         textarea.value =
             "# This is a comment\n" +
             "def main():\n" +
-            "\tprint('Hello world!')\n";
+            "\tprint('Hello world!')\n" +
+            '\treturn {"msg":"Hello!!"}\n';
     }
 
     const resetButton = document.getElementById("reset-button");
@@ -47,10 +48,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
         setDemoCode();
 
-        const pre = document.querySelector("#script-result pre");
+        const pres = document.querySelectorAll("#script-result pre");
 
-        pre.textContent = "";
+        pres.forEach((pre) => {
+            pre.textContent = "";
+        });
     });
+
+    function setPreContent(pre, text) {
+        const span = pre.querySelector("span");
+
+        pre.innerHTML = "";
+        if (span) {
+            pre.appendChild(span);
+        }
+
+        pre.appendChild(document.createTextNode(text || ""));
+    }
 
     const form = document.querySelector("form");
 
@@ -68,9 +82,18 @@ document.addEventListener("DOMContentLoaded", function () {
         })
             .then((response) => response.json())
             .then((data) => {
-                const pre = document.querySelector("#script-result pre");
-
-                pre.textContent = JSON.stringify(data, null, 2);
+                setPreContent(
+                    document.querySelector("#script-result #json-response"),
+                    JSON.stringify(data, null, 2)
+                );
+                setPreContent(
+                    document.querySelector("#script-result #json-result"),
+                    JSON.stringify(data.result, null, 2)
+                );
+                setPreContent(
+                    document.querySelector("#script-result #json-stdout"),
+                    data.stdout
+                );
             })
             .catch((error) => {
                 console.error("Error:", error);

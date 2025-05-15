@@ -7,7 +7,7 @@ def create_app():
     app = Flask(__name__)
 
     logging.basicConfig(
-        filename="logs/record.log",
+        filename="record.log",
         level=logging.DEBUG,
         format=f"%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s",
     )
