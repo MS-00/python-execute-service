@@ -29,7 +29,8 @@ def script_execute():
         sys.stdout = stdout_buffer
 
         try:
-            exec(script, {}, local_namespace)
+            # Use the same namespace for globals and locals so functions can reference each other
+            exec(script, local_namespace, local_namespace)
 
             # Check if 'main' is in the local namespace and is callable
             if "main" in local_namespace and callable(local_namespace["main"]):

@@ -1,7 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
     const textarea = document.getElementById("python-code");
 
-    setDemoCode();
+    textarea.value =
+        "# There must be a 'main' function and it should return a dict \n" +
+        "def main():\n" +
+        "\tprint('Hello world!')\n" +
+        '\treturn {"msg":"Hello!!"}\n';
 
     textarea.addEventListener("keydown", function (e) {
         if (e.key === "Tab") {
@@ -33,25 +37,21 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    function setDemoCode() {
-        textarea.value =
-            "# This is a comment\n" +
-            "def main():\n" +
-            "\tprint('Hello world!')\n" +
-            '\treturn {"msg":"Hello!!"}\n';
-    }
-
     const resetButton = document.getElementById("reset-button");
 
     resetButton.addEventListener("click", function (e) {
         e.preventDefault();
 
-        setDemoCode();
+        textarea.value =
+            "# There must be a 'main' function and it should return a dict \n" +
+            "def main():\n" +
+            "\t# your code ...\n" +
+            "\treturn {}\n";
 
         const pres = document.querySelectorAll("#script-result pre");
 
         pres.forEach((pre) => {
-            pre.textContent = "";
+            setPreContent(pre, "");
         });
     });
 

@@ -20,8 +20,8 @@
     </head>
     <body>
         <main class="flex flex-col min-h-screen bg-gray-100 p-4">
-            <div class="flex gap-4 w-full p-4 bg-white shadow-md">
-                <div id="code-editore" class="flex-2">
+            <div class="flex gap-4 w-full p-4 bg-white shadow-md max-md:flex-wrap">
+                <div id="code-editore" class="md:flex-3 lg:flex-2 w-full">
                     <form method="post" action="/script/execute">
                         <div class="flex items-center justify-between mb-4">
                             <h1 class="text-2xl font-bold flex-1">
@@ -60,7 +60,7 @@
 
                 <div
                     id="script-result"
-                    class="flex-1 p-4 border border-gray-300"
+                    class="md:flex-2 lg:flex-1 w-full p-4 border border-gray-300"
                 >
                     <h1 class="text-2xl font-bold mb-2">Reponse</h1>
                     <pre
