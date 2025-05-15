@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Python editor</title>
+
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+        <link
+            type="text/css"
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/style.css') }}"
+        />
+
+        <script
+            src="{{ url_for('static', filename='js/main.js') }}"
+            defer
+        ></script>
+    </head>
+    <body>
+        <main
+            class="flex flex-col  min-h-screen bg-gray-100 p-4"
+        >
+            <div class="flex gap-4 w-full p-4 bg-white shadow-md">
+                <div id="code-editore" class="flex-2">
+                    <form method="post" action="/script/execute">
+                        <div class="flex items-center justify-between mb-4">
+                            <h1 class="text-2xl font-bold flex-1">
+                                Python Editor
+                            </h1>
+
+                            <div class="flex-2 text-right">
+                                <button
+                                    id="reset-button"
+                                    class="px-4 py-2 text-blue-500 border border-blue-500 rounded hover:bg-gray-50"
+                                    type="reset"
+                                >
+                                    Reset
+                                </button>
+
+                                <button
+                                    class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600"
+                                    type="submit"
+                                >
+                                    Run
+                                </button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <textarea
+                                id="python-code"
+                                class="w-full p-4 border border-gray-300 rounded"
+                                placeholder="Write your Python code here..."
+                                rows="20"
+                            >
+                            </textarea>
+                        </div>
+                    </form>
+                </div>
+
+                <div
+                    id="script-result"
+                    class="flex-1 p-4 border border-gray-300"
+                >
+                    <h1 class="text-2xl font-bold mb-2">Reponse</h1>
+                    <pre class="bg-gray-100 w-full h-auto p-4"></pre>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
