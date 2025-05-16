@@ -4,4 +4,5 @@ button:hover {
 
 pre {
     white-space: pre-wrap;
+    word-break: break-all;
 }
