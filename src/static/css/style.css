@@ -6,3 +6,7 @@ pre {
     white-space: pre-wrap;
     word-break: break-all;
 }
+
+.cursor-wait-global, .cursor-wait-global * {
+  cursor: wait !important;
+}

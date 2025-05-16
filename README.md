@@ -82,6 +82,17 @@ docker exec -it <CONTAINER_ID/NAME> tail -f /app/record.log
 }
 ```
 
+## Example cURL Request
+
+```bash
+curl --request POST \
+  --url http://localhost:8080/script/execute \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "script": "# There must be a 'main' function and it should return a dict \ndef main():\n\tprint('Hello world!')\n\treturn {\"msg\":\"Hello!!\"}\n"
+}'
+```
+
 ## Security
 
 - Scripts are executed in a strict nsjail sandbox with CPU, memory, and file limits.

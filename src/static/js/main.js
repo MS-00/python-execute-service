@@ -71,6 +71,13 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
+        document.documentElement.classList.add("cursor-wait-global");
+
+        const pres = document.querySelectorAll("#script-result pre");
+        pres.forEach((pre) => {
+            setPreContent(pre, "");
+        });
+
         const script = textarea.value;
 
         fetch(form.action, {
@@ -97,6 +104,9 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch((error) => {
                 console.error("Error:", error);
+            })
+            .finally(() => {
+                document.documentElement.classList.remove("cursor-wait-global");
             });
     });
 });
